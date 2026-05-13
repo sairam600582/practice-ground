@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flash-app
+  labels:
+    app: flash-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flash-app
+  template:
+    metadata:
+      labels:
+        app: flash-app
+    spec:
+      containers:
+      - name: flash-app
+        image: sairam600582/demo-python:v1
+        ports:
+        - containerPort: 5000
