@@ -5,13 +5,6 @@ pipeline {
         DOCKER_IMAGE = "yourdockerhubusername/flask-app:latest"
     }
 
-    stages {
-        stage('update') {
-            steps {
-                sh 'sudo apt update'
-            }
-        }
-
         stage('Docker Login') {
             steps {
                 withCredentials([string(
