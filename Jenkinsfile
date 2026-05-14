@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "yourdockerhubusername/flask-app:latest"
+        DOCKER_IMAGE = "sairam600582/demo-python:v1"
     }
 
         stage('Docker Login') {
@@ -12,7 +12,7 @@ pipeline {
                     variable: 'DOCKER_TOKEN'
                 )]) {
                     sh '''
-                    echo $DOCKER_TOKEN | docker login -u yourdockerhubusername --password-stdin
+                    echo $DOCKER_TOKEN | docker login -u sairam600582 --password-stdin
                     '''
                 }
             }
@@ -21,8 +21,8 @@ pipeline {
         stage('pull') {
             steps {
                 sh '''
-                docker rm -f flask-app || true
-                docker run -d --name flask-app -p 5000:5000 $DOCKER_IMAGE
+                docker rm -f demo-python || true
+                docker run -d --name demo-python -p 5000:5000 $DOCKER_IMAGE
                 '''
             }
         }
