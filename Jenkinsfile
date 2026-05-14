@@ -23,7 +23,7 @@ pipeline {
             steps {
                 sh '''
                 docker rm -f demo-python || true
-                docker run -d --name demo-python -p 5000:5000 $DOCKER_IMAGE
+                docker run -d --name demo-python -p 5001:5001 $DOCKER_IMAGE
                 '''
             }
         }
