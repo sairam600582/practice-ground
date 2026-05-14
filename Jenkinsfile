@@ -9,7 +9,7 @@ pipeline {
         stage('Docker Login') {
             steps {
                 withCredentials([string(
-                    credentialsId: 'docker-token',
+                    credentialsId: 'DOCKER_TOKEN',
                     variable: 'DOCKER_TOKEN'
                 )]) {
                     sh '''
