@@ -27,7 +27,10 @@ pipeline {
 
         stage('pull') {
             steps {
-                sh 'docker pull $DOCKER_IMAGE'
+                sh '''
+                docker rm -f flask-app || true
+                docker run -d --name flask-app -p 5000:5000 $DOCKER_IMAGE
+                '''
             }
         }
 
