@@ -5,6 +5,7 @@ pipeline {
         DOCKER_IMAGE = "sairam600582/demo-python:v1"
     }
 
+    stages {
         stage('Docker Login') {
             steps {
                 withCredentials([string(
@@ -32,4 +33,5 @@ pipeline {
                 sh 'docker run -d -p 5000:5000 $DOCKER_IMAGE'
             }
         }
+    }
 }
