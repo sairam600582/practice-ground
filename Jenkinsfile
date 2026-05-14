@@ -1,22 +1,36 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_IMAGE = "yourdockerhubusername/flask-app:latest"
+    }
+
     stages {
         stage('update') {
             steps {
-               sh 'apt update ' 
+                sh 'apt update'
             }
         }
-        stage('login') {
+
+        stage('Docker Login') {
             steps {
-                sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+                withCredentials([string(
+                    credentialsId: 'docker-token',
+                    variable: 'DOCKER_TOKEN'
+                )]) {
+                    sh '''
+                    echo $DOCKER_TOKEN | docker login -u yourdockerhubusername --password-stdin
+                    '''
+                }
             }
         }
+
         stage('pull') {
             steps {
                 sh 'docker pull $DOCKER_IMAGE'
             }
         }
+
         stage('browse') {
             steps {
                 sh 'docker run -d -p 5000:5000 $DOCKER_IMAGE'
