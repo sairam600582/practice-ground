@@ -1,14 +1,16 @@
-pipeline {
-    agent any
+apiVersion: v1
+kind: Service
 
-    stages {
-        stage('Deploy to Kubernetes') {
-            steps {
+metadata:
+  name: flash-app-service
 
-                sh 'kubectl apply -f deployments.yaml'
+spec:
+  type: NodePort
 
-                sh 'kubectl apply -f services.yaml'
-            }
-        }
-    }
-}
+  selector:
+    app: flash-app
+
+  ports:
+    - port: 5000
+      targetPort: 5000
+      nodePort: 30007
