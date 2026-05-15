@@ -1,22 +1,33 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_IMAGE = "sairam600582/demo-python:v1"
+    }
+
     stages {
-        stage('update') {
+        stage('Docker Login') {
             steps {
-               sh 'apt update ' 
+                withCredentials([string(
+                    credentialsId: 'docker-token',
+                    variable: 'DOCKER_TOKEN'
+                )]) {
+                    sh '''
+                    echo $DOCKER_TOKEN | docker login -u sairam600582 --password-stdin
+                    '''
+                }
             }
         }
-        stage('login') {
-            steps {
-                sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
-            }
-        }
+
         stage('pull') {
             steps {
-                sh 'docker pull $DOCKER_IMAGE'
+                sh '''
+                docker rm -f demo-python || true
+                docker run -d --name demo-python -p 5000:5000 $DOCKER_IMAGE
+                '''
             }
         }
+
         stage('browse') {
             steps {
                 sh 'docker run -d -p 5000:5000 $DOCKER_IMAGE'
