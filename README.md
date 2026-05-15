@@ -3,7 +3,6 @@ practice-ground
 
 **VERY IMPORTANT**
 **Ubuntu EC2**
- ├── Jenkins
- ├── Docker
+ ├── Jenkins ├── Docker
  ├── kubectl
  └── Minikube
