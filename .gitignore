@@ -2,3 +2,10 @@
 *.tfstate
 *.tfstate.backup
 .terraform.lock.hcl
+Dockerfile
+flow.sh
+app.py
+Jenkinsfile
+services.yaml
+deployments.yaml
+
