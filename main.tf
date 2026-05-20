@@ -25,7 +25,7 @@ module "ec2" {
 
 terraform {
   backend "s3" {
-    bucket = "your-terraform-state-bucket"
+    bucket = "aws-ec2-instance-bucket-backend-2026-20-05-wed"
     key    = "terraform.tfstate"
     region = "ap-south-1"
   }
