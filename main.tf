@@ -22,3 +22,11 @@ module "ec2" {
   security_group_id = module.vpc.security_group_id
   key_name          = aws_key_pair.generated_key.key_name
 }
+
+terraform {
+  backend "s3" {
+    bucket = "your-terraform-state-bucket"
+    key    = "terraform.tfstate"
+    region = "ap-south-1"
+  }
+}
