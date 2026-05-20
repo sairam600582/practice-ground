@@ -25,7 +25,7 @@ module "ec2" {
 
 terraform {
   backend "s3" {
-    bucket = "aws-ec2-instance-bucket-backend-2026-20-05-wed"
+    bucket = "aws-ec2-instance-bucket-backend-2026-20-05-wed"  #change s3 bucket name everytime as existed in the s3
     key    = "terraform.tfstate"
     region = "ap-south-1"
   }
