@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = "sairam600582/demo-python:v1"
     }
-
+    #Docker
     stages {
         stage('Docker Login') {
             steps {
@@ -33,5 +33,17 @@ pipeline {
                 sh 'docker run -d -p 5000:5000 $DOCKER_IMAGE'
             }
         }
+        #kubernetes 
+        //  stage('Deploy to Kubernetes') {
+        //     steps {
+        //         sh 'kubectl apply -f deployment.yaml'
+        //         sh 'kubectl apply -f service.yaml'
+        //     }
+        // }
+
+        // stage('Verify Deployment') {
+        //     steps {
+        //         sh 'kubectl get pods'
+        //         sh 'kubectl get svc'
     }
 }
