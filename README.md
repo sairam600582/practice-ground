@@ -9,6 +9,8 @@ practice-ground
 ├── kubectl
 └── Minikube
 
+------------------
+
 # install Helm on ubuntu
 **_recommended for up to date install_**
 
@@ -59,3 +61,4 @@ kubectl get pods -n prometheus
 ```
 kubectl --namespace=prometheus port-forward deploy/prometheus-server 9090
 ```
+
