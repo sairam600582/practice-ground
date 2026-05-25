@@ -1,14 +1,49 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_IMAGE = "sairam600582/demo-python:v1"
+    }
+    # Docker
     stages {
-        stage('Deploy to Kubernetes') {
+        stage('Docker Login') {
             steps {
-
-                sh 'kubectl apply -f deployments.yaml'
-
-                sh 'kubectl apply -f services.yaml'
+                withCredentials([string(
+                    credentialsId: 'DOCKER_TOKEN',
+                    variable: 'DOCKER_TOKEN'
+                )]) {
+                    sh '''
+                    echo $DOCKER_TOKEN | docker login -u sairam600582 --password-stdin
+                    '''
+                }
             }
         }
+
+        stage('pull') {
+            steps {
+                sh '''
+                docker rm -f demo-python || true
+                docker run -d --name demo-python -p 5001:5001 $DOCKER_IMAGE
+                '''
+            }
+        }
+
+        stage('browse') {
+            steps {
+                sh 'docker run -d -p 5000:5000 $DOCKER_IMAGE'
+            }
+        }
+        # kubernetes 
+        //  stage('Deploy to Kubernetes') {
+        //     steps {
+        //         sh 'kubectl apply -f deployment.yaml'
+        //         sh 'kubectl apply -f service.yaml'
+        //     }
+        // }
+
+        // stage('Verify Deployment') {
+        //     steps {
+        //         sh 'kubectl get pods'
+        //         sh 'kubectl get svc'
     }
 }
