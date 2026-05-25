@@ -1,4 +1,3 @@
-
 resource "tls_private_key" "generated" {
   algorithm = "RSA"
 }
@@ -22,4 +21,12 @@ module "ec2" {
   subnet_id         = module.vpc.subnet_id
   security_group_id = module.vpc.security_group_id
   key_name          = aws_key_pair.generated_key.key_name
+}
+
+terraform {
+  backend "s3" {
+    bucket = "aws-ec2-instance-bucket-backend-2026-20-05-wed"   #chnage s3 bucket name everytime with existed. 
+    key    = "terraform.tfstate"
+    region = "ap-south-1"
+  }
 }
