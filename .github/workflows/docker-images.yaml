@@ -1,0 +1,22 @@
+name: Docker
+on:
+  push:
+    branches: 
+      - main
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: build docker
+        run: docker build -t demo-python .
+      - name: run docker container
+        run: docker run -d -p 5000:5000 --name python-app demo-python
+      - name: check container
+        run: docker ps
+      - name: Test local endpoint inside runner
+        run: |
+          sleep 5
+          curl http://localhost:5000
