@@ -75,11 +75,12 @@ minikube start --driver=docker
 
 2. install nginx gateway fabric controller
 
-
-# 1. Add the NGINX Helm repository
 ```
+# 1. Add the NGINX Helm repository
+
 helm repo add nginx-stable https://helm.nginx.com/stable
 helm repo update
+```
 ```
 # 2. Install the NGINX Gateway Fabric controller
 helm install ngf nginx-stable/nginx-gateway-fabric --create-namespace --namespace nginx-gateway
@@ -100,7 +101,7 @@ kubectl apply -f networking/http-route.yaml
 ```
 
 4. Finally port forwarding to access browser
+
 ```
 kubectl port-forward svc/flash-app-gateway-nginx 8080:80
-
 ```
