@@ -64,3 +64,42 @@ kubectl get pods -n prometheus
 kubectl --namespace=prometheus port-forward deploy/prometheus-server 9090
 ```
 
+------------
+
+**k8s-Gateway API**
+1. start the minikube
+
+```
+minikube start --driver=docker
+```
+
+2. install nginx gateway fabric controller
+
+```
+# 1. Add the NGINX Helm repository
+helm repo add nginx-stable https://helm.nginx.com/stable
+helm repo update
+
+# 2. Install the NGINX Gateway Fabric controller
+helm install ngf nginx-stable/nginx-gateway-fabric --create-namespace --namespace nginx-gateway
+```
+
+3. Deploy the k8s manifests
+```
+cd practice-ground/
+```
+
+```
+kubectl apply -f app-deployment/deployments.yaml
+kubectl apply -f app-deployment/services.yaml
+
+kubectl apply -f networking/gateway-class.yaml
+kubectl apply -f networking/gateway.yaml
+kubectl apply -f networking/http-route.yaml
+```
+
+4. Finally port forwarding to access browser
+```
+kubectl port-forward svc/flash-app-gateway-nginx 8080:80
+
+```
