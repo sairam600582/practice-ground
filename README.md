@@ -75,16 +75,21 @@ minikube start --driver=docker
 
 2. install nginx gateway fabric controller
 
-```
+
 # 1. Add the NGINX Helm repository
+
+```
 helm repo add nginx-stable https://helm.nginx.com/stable
 helm repo update
-
+```
 # 2. Install the NGINX Gateway Fabric controller
+
+```
 helm install ngf nginx-stable/nginx-gateway-fabric --create-namespace --namespace nginx-gateway
 ```
 
 3. Deploy the k8s manifests
+
 ```
 cd practice-ground/
 ```
@@ -92,7 +97,9 @@ cd practice-ground/
 ```
 kubectl apply -f app-deployment/deployments.yaml
 kubectl apply -f app-deployment/services.yaml
+```
 
+```
 kubectl apply -f networking/gateway-class.yaml
 kubectl apply -f networking/gateway.yaml
 kubectl apply -f networking/http-route.yaml
