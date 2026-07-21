@@ -1,0 +1,58 @@
+{
+    "AvailabilityZones": [
+        {
+            "OptInStatus": "opt-in-not-required",
+            "Messages": [],
+            "RegionName": "ap-south-2",
+            "ZoneName": "ap-south-2a",
+            "ZoneId": "aps2-az1",
+            "GroupName": "ap-south-2-zg-1",
+            "NetworkBorderGroup": "ap-south-2",
+            "ZoneType": "availability-zone",
+            "GroupLongName": "Asia Pacific (Hyderabad) 1",
+            "Geography": [
+                {
+                    "Name": "India"
+                }
+            ],
+            "SubGeography": [],
+            "State": "available"
+        },
+        {
+            "OptInStatus": "opt-in-not-required",
+            "Messages": [],
+            "RegionName": "ap-south-2",
+            "ZoneName": "ap-south-2b",
+            "ZoneId": "aps2-az2",
+            "GroupName": "ap-south-2-zg-1",
+            "NetworkBorderGroup": "ap-south-2",
+            "ZoneType": "availability-zone",
+            "GroupLongName": "Asia Pacific (Hyderabad) 1",
+            "Geography": [
+                {
+                    "Name": "India"
+                }
+            ],
+            "SubGeography": [],
+            "State": "available"
+        },
+        {
+            "OptInStatus": "opt-in-not-required",
+            "Messages": [],
+            "RegionName": "ap-south-2",
+            "ZoneName": "ap-south-2c",
+            "ZoneId": "aps2-az3",
+            "GroupName": "ap-south-2-zg-1",
+            "NetworkBorderGroup": "ap-south-2",
+            "ZoneType": "availability-zone",
+            "GroupLongName": "Asia Pacific (Hyderabad) 1",
+            "Geography": [
+                {
+                    "Name": "India"
+                }
+            ],
+            "SubGeography": [],
+            "State": "available"
+        }
+    ]
+}

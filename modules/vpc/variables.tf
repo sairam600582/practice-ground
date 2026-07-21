@@ -9,6 +9,6 @@ variable "vpc" {
   default = "10.0.0.0/16"
 }
 
-variable "subent" {
+variable "subnet" {
   default = "10.0.1.0/24"
 }

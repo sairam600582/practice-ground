@@ -7,7 +7,7 @@ resource "aws_vpc" "myvpc" {
 
 resource "aws_subnet" "public-subnet" {
   vpc_id     = aws_vpc.myvpc.id
-  cidr_block = var.subent
+  cidr_block = var.subnet
    availability_zone = "ap-south-1a"
 
   tags = {
@@ -93,7 +93,7 @@ resource "aws_security_group" "sg-1" {
 # resource "aws_subnet" "public-subnet" {
 #   vpc_id     = aws_vpc.myvpc.id
 #   cidr_block = var.subent
-#    availability_zone = "ap-south-1a"
+#    availability_zone = "ap-south-2a"
 
 #   tags = {
 #     name = "public-subnet"
